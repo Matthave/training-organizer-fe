@@ -1,0 +1,57 @@
+---
+alwaysApply: true
+---
+
+# Stos Technologiczny
+
+Ten dokument opisuje główny stos technologiczny używany w tym projekcie.
+
+- **Framework:** [Next.js](https://nextjs.org/) (wersja 15+ z App Router).
+
+  - Routing, rendering i logika backendowa są zarządzane przez Next.js.
+  - Głowna logika backendowa jest przygotowana w osobnym projekcie, zbudowana na stosie technologicznym Node.js + Express.js + MongoDB
+  - Używaj Server Side Rendering (SSR) lub Static Site Generation (SSG) w zależności od potrzeb strony.
+
+- **Język:** [TypeScript](https://www.typescriptlang.org/).
+
+  - Cały nowy kod musi być pisany w TypeScript.
+  - Stosuj ścisłe typowanie i unikaj typu `any` tak bardzo, jak to możliwe.
+  - Definicje typów globalnych znajdują się w `src/types/types.ts`.
+
+- **Stylowanie:** [SASS/SCSS](https://sass-lang.com/).
+
+  - Wszystkie pliki stylów znajdują się w katalogu `src/SASS`.
+  - Struktura opiera się na plikach częściowych (partials), importowanych do głównego `style.scss`.
+  - Używaj zmiennych SASS dla kolorów, czcionek i innych wartości (zdefiniowanych w `_variables.scss`).
+  - Stosuj mixiny (z `_mixins.scss`) dla powtarzalnych bloków CSS.
+
+  - **MaterialUI:**
+
+  - Używaj Material-UI (MUI) jako podstawowej biblioteki komponentów UI.
+  - Preferuj komponenty MUI zamiast tworzenia własnych, chyba że wymagana jest specjalna funkcjonalność.
+  - Dostosowuj wygląd komponentów MUI za pomocą `sx` prop.
+  - Wykorzystuj system theming MUI dla spójności kolorów, typografii i spacing.
+  - Integruj MUI z SASS/SCSS dla globalnych stylów i overrides gdy potrzebne.
+
+- **Zarządzanie Stanem:**
+
+  - Głównie za pomocą wbudowanych hooków React: `useState`.
+  - Dla bardziej złożonej logiki stanu, używaj `useReducer`.
+  - Unikaj wprowadzania zewnętrznych bibliotek do zarządzania stanem (jak Redux czy Zustand), chyba że jest to absolutnie konieczne.
+
+- **Pobieranie Danych (Data Fetching):**
+
+  - **Mutacje Danych:** Używaj [Next.js Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations). Główny plik dla akcji to `src/app/actions.ts`.
+  - **Pobieranie Danych po Stronie Klienta:** Używaj standardowego API `fetch` lub hooka `useEffect`
+  - **Pobieranie Danych po Stronie Serwera:** Używaj standardowych mechanizmów `fetch` w komponentach serwerowych Next.js.
+
+- **Autentykacja:**
+
+  - System oparty na tokenach (prawdopodobnie JWT).
+  - Logika odświeżania tokenów znajduje się w `src/utils/refresh.ts`.
+  - `middleware.ts` w katalogu `src` jest używany do ochrony tras (route protection) i obsługi sesji użytkownika.
+
+- **Linting i Formatowanie:**
+  - **Linter:** [ESLint](https://eslint.org/) (konfiguracja w `eslint.config.js`).
+  - **Formatter:** [Prettier](https://prettier.io/) (konfiguracja prawdopodobnie w `.prettierrc.json` lub w ustawieniach ESLint).
+  - Upewnij się, że kod jest sformatowany zgodnie z tymi regułami przed commitem.

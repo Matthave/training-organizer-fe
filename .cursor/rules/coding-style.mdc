@@ -1,0 +1,56 @@
+---
+alwaysApply: true
+---
+
+# Styl i Konwencje Kodowania
+
+Ten dokument określa standardy kodowania i konwencje stylistyczne obowiązujące w projekcie.
+
+- **Komponenty React:**
+
+  - Pisz wyłącznie komponenty funkcyjne z użyciem hooków.
+  - Nazwy plików i komponentów powinny być w formacie `PascalCase`, np. `MyComponent.tsx`.
+  - Stosuj destrukturyzację propsów.
+  - Definiuj typy dla propsów za pomocą `interface` lub `type`.
+
+- **Nazewnictwo Plików:**
+
+  - **Komponenty:** `PascalCase.tsx`
+  - **Strony (Routes):** `page.tsx`, `layout.tsx`, `error.tsx` (zgodnie z konwencją Next.js).
+  - **Moduły i Skrypty:** `camelCase.ts`
+    - **Style SASS:** `_partialName.scss`
+
+- **Folder i pliki**
+
+- Każdy, nowo tworzony plik, powinien być osadzony w folder o tej samej nazwie np. `Profile/Profile.tsx`
+
+- **Struktura Komponentu:**
+
+  1. Importy.
+  2. Definicja typów (jeśli lokalne).
+  3. Ciało komponentu.
+  4. `export default`.
+
+  - **Stylowanie (SASS/SCSS):**
+
+  - Używaj klas CSS opartych na metodologii zbliżonej do BEM (Block, Element, Modifier), aby zapewnić przejrzystość i unikać konfliktów. Np. `&__element`, `&--modifier`.
+  - Grupuj powiązane style w plikach częściowych (partials) w `src/SASS`.
+  - Unikaj zagnieżdżania selektorów na więcej niż 3 poziomy, aby nie tworzyć zbyt specyficznych reguł.
+
+- **TypeScript:**
+
+  - Zawsze definiuj typy dla propsów komponentów, stanu, argumentów funkcji i wartości zwracanych.
+  - Preferuj użycie `interface` dla publicznych API i propsów, a `type` dla typów pomocniczych.
+  - Korzystaj z typów globalnych z `src/types/types.ts` dla współdzielonych struktur danych.
+
+- **Importy:**
+
+  - Organizuj importy w następującej kolejności:
+    1. Zewnętrzne biblioteki (np. `react`, `next`).
+    2. Importy absolutne z projektu (np. `src/app/components/...`).
+    3. Importy relatywne (np. `./MyChildComponent`).
+  - Używaj aliasów ścieżek (`@/*`), jeśli są skonfigurowane w `tsconfig.json`.
+
+- **Komentarze:**
+  - Pisz komentarze tylko wtedy, gdy wyjaśniają _dlaczego_ coś jest zrobione, a nie _co_ jest robione. Kod powinien być samoopisujący.
+  - Unikaj zakomentowanego kodu w finalnej wersji.

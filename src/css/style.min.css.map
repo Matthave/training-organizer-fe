@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACAA,IAAI,CAAJ,UAAI",
+    "sources": [
+        "../SASS/style.scss",
+        "../SASS/_mixins.scss"
+    ],
+    "names": [],
+    "file": "style.min.css"
+}

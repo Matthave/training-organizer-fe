@@ -1,0 +1,12 @@
+@import "_variables";
+@import "_mixins";
+
+:root {
+    --primary-gold: #{$primary-gold};
+    --primary-dark: #{$primary-dark};
+    --primary-darkest: #{$primary-darkest};
+}
+
+body {
+    margin: 0;
+}
