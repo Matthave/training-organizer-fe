@@ -456,14 +456,20 @@ export default function Exercises() {
                 label={s.name}
                 onDelete={() => handleRemoveSubpart(s.name)}
                 sx={{
-                  backgroundColor: "#fdbd32",
-                  color: "#1d1e20",
+                  backgroundColor: "transparent",
+                  border: "1px solid #fdbd32",
+                  color: "#fdbd32",
                   fontFamily: "Michroma",
                   p: 1,
                   py: 3,
                   borderRadius: "31px",
                   "& .MuiChip-deleteIcon": {
-                    color: "#1d1e20",
+                    color: "#fdbd32",
+                    transition: "transform 0.3s ease",
+                    "&:hover": {
+                      color: "#fdbd32",
+                      transform: "scale(1.1)",
+                    },
                   },
                 }}
               />

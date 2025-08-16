@@ -121,7 +121,7 @@ export default function DashboardLayout({
                 fontFamily: "Michroma",
                 fontSize: "14px",
                 "&:hover": {
-                  backgroundColor: "transparent",
+                  backgroundColor: "transparent !important",
                   color: "#fdbd32",
                 },
               }}
@@ -134,7 +134,7 @@ export default function DashboardLayout({
                 fontFamily: "Michroma",
                 fontSize: "14px",
                 "&:hover": {
-                  backgroundColor: "transparent",
+                  backgroundColor: "transparent !important",
                   color: "#fdbd32",
                 },
               }}
@@ -147,7 +147,7 @@ export default function DashboardLayout({
                 fontFamily: "Michroma",
                 fontSize: "14px",
                 "&:hover": {
-                  backgroundColor: "transparent",
+                  backgroundColor: "transparent !important",
                   color: "#fdbd32",
                 },
               }}
@@ -160,12 +160,12 @@ export default function DashboardLayout({
                 fontFamily: "Michroma",
                 fontSize: "14px",
                 "&:hover": {
-                  backgroundColor: "transparent",
+                  backgroundColor: "transparent !important",
                   color: "#fdbd32",
                 },
               }}
             >
-              Gotowe treningi
+              Moje treningi
             </MenuItem>
             <MenuItem
               onClick={handleLogout}
@@ -173,7 +173,7 @@ export default function DashboardLayout({
                 fontFamily: "Michroma",
                 fontSize: "14px",
                 "&:hover": {
-                  backgroundColor: "transparent",
+                  backgroundColor: "transparent !important",
                   color: "#fdbd32",
                 },
               }}
