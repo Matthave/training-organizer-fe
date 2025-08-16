@@ -1,12 +1,14 @@
-@import "_variables";
 @import "_mixins";
+@import "_variables";
+@import "_main";
+@import "_exerciseItem";
 
 :root {
-    --primary-gold: #{$primary-gold};
-    --primary-dark: #{$primary-dark};
-    --primary-darkest: #{$primary-darkest};
+  --primary-gold: #{$primary-gold};
+  --primary-dark: #{$primary-dark};
+  --primary-darkest: #{$primary-darkest};
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }

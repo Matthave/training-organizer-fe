@@ -1,5 +1,10 @@
 "use client";
-import { useState, type ChangeEvent } from "react";
+import {
+  useState,
+  type ChangeEvent,
+  useEffect,
+  type KeyboardEvent,
+} from "react";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { toast } from "react-toastify";
 import { Colors } from "@/types/types";
@@ -9,17 +14,97 @@ export default function SignupForm() {
   const [signupEmail, setSignupEmail] = useState<string>("");
   const [signupPassword, setSignupPassword] = useState<string>("");
   const [signupUsername, setSignupUsername] = useState<string>("");
+  const [usernameError, setUsernameError] = useState<string>("");
+  const [emailError, setEmailError] = useState<string>("");
+  const [passwordError, setPasswordError] = useState<string>("");
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+
+  useEffect(() => {
+    const isUsernameValid = signupUsername.length >= 2;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isEmailValid = emailRegex.test(signupEmail);
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/;
+    const isPasswordValid = passwordRegex.test(signupPassword);
+
+    setIsFormValid(isUsernameValid && isEmailValid && isPasswordValid);
+  }, [signupEmail, signupPassword, signupUsername]);
 
   const handleSignupEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSignupEmail(event.target.value);
+    const newEmail = event.target.value;
+    setSignupEmail(newEmail);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailError && emailRegex.test(newEmail)) {
+      setEmailError("");
+    }
+  };
+
+  const handleEmailBlur = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (signupEmail && !emailRegex.test(signupEmail)) {
+      setEmailError("Podaj poprawny adres e-mail.");
+    } else {
+      setEmailError("");
+    }
   };
 
   const handleSignupPasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSignupPassword(event.target.value);
+    const newPassword = event.target.value;
+    setSignupPassword(newPassword);
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/;
+    if (passwordError && passwordRegex.test(newPassword)) {
+      setPasswordError("");
+    }
+  };
+
+  const handlePasswordBlur = () => {
+    if (!signupPassword) {
+      setPasswordError("");
+      return;
+    }
+
+    const errors = [];
+    if (signupPassword.length < 8) {
+      errors.push("co najmniej 8 znaków");
+    }
+    if (!/[a-z]/.test(signupPassword)) {
+      errors.push("jedną małą literę");
+    }
+    if (!/[A-Z]/.test(signupPassword)) {
+      errors.push("jedną dużą literę");
+    }
+    if (!/[^A-Za-z0-9]/.test(signupPassword)) {
+      errors.push("jeden znak specjalny");
+    }
+
+    if (errors.length > 0) {
+      setPasswordError(`Hasło musi zawierać: ${errors.join(", ")}.`);
+    } else {
+      setPasswordError("");
+    }
   };
 
   const handleSignupUsernameChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSignupUsername(event.target.value);
+    const newUsername = event.target.value;
+    setSignupUsername(newUsername);
+    if (usernameError && newUsername.length >= 2) {
+      setUsernameError("");
+    }
+  };
+
+  const handleUsernameBlur = () => {
+    if (signupUsername && signupUsername.length < 2) {
+      setUsernameError("Nazwa użytkownika musi mieć co najmniej 2 znaki.");
+    } else {
+      setUsernameError("");
+    }
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" && isFormValid) {
+      handleSignup();
+    }
   };
 
   const handleSignup = async () => {
@@ -55,6 +140,7 @@ export default function SignupForm() {
 
   return (
     <Box
+      onKeyDown={handleKeyDown}
       sx={{
         flex: 1,
         bgcolor: Colors.primaryDarkest,
@@ -79,6 +165,9 @@ export default function SignupForm() {
           autoComplete="off"
           value={signupUsername}
           onChange={handleSignupUsernameChange}
+          onBlur={handleUsernameBlur}
+          error={!!usernameError}
+          helperText={usernameError}
           sx={{
             "& .MuiInputLabel-root": { color: Colors.primaryGold },
             "& .MuiInputLabel-root.Mui-focused": { color: Colors.primaryGold },
@@ -87,6 +176,9 @@ export default function SignupForm() {
               "& fieldset": { borderColor: Colors.primaryGold },
               "&:hover fieldset": { borderColor: Colors.primaryGold },
               "&.Mui-focused fieldset": { borderColor: Colors.primaryGold },
+            },
+            "& .MuiFormHelperText-root": {
+              color: "#f44336",
             },
           }}
         />
@@ -98,6 +190,9 @@ export default function SignupForm() {
           autoComplete="off"
           value={signupEmail}
           onChange={handleSignupEmailChange}
+          onBlur={handleEmailBlur}
+          error={!!emailError}
+          helperText={emailError}
           sx={{
             "& .MuiInputLabel-root": { color: Colors.primaryGold },
             "& .MuiInputLabel-root.Mui-focused": { color: Colors.primaryGold },
@@ -106,6 +201,9 @@ export default function SignupForm() {
               "& fieldset": { borderColor: Colors.primaryGold },
               "&:hover fieldset": { borderColor: Colors.primaryGold },
               "&.Mui-focused fieldset": { borderColor: Colors.primaryGold },
+            },
+            "& .MuiFormHelperText-root": {
+              color: "#f44336",
             },
           }}
         />
@@ -116,6 +214,9 @@ export default function SignupForm() {
           variant="outlined"
           value={signupPassword}
           onChange={handleSignupPasswordChange}
+          onBlur={handlePasswordBlur}
+          error={!!passwordError}
+          helperText={passwordError}
           sx={{
             "& .MuiInputLabel-root": { color: Colors.primaryGold },
             "& .MuiInputLabel-root.Mui-focused": { color: Colors.primaryGold },
@@ -125,17 +226,25 @@ export default function SignupForm() {
               "&:hover fieldset": { borderColor: Colors.primaryGold },
               "&.Mui-focused fieldset": { borderColor: Colors.primaryGold },
             },
+            "& .MuiFormHelperText-root": {
+              color: "#f44336",
+            },
           }}
         />
         <Button
           variant="contained"
           fullWidth
+          disabled={!isFormValid}
           sx={{
             mt: 1,
             bgcolor: Colors.primaryGold,
             color: Colors.primaryDarkest,
             fontWeight: 600,
             "&:hover": { bgcolor: "#ffc94f" },
+            "&.Mui-disabled": {
+              cursor: "not-allowed",
+              pointerEvents: "auto",
+            },
           }}
           onClick={handleSignup}
         >

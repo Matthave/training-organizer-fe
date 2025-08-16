@@ -71,8 +71,8 @@ export default function LoginForm() {
         p: 3,
       }}
     >
-      <form action={handleLogin}>
-        <Stack spacing={2}>
+      <form style={{ height: "100%" }} action={handleLogin}>
+        <Stack sx={{ height: "100%" }} spacing={2}>
           {error && <Alert severity="error">{error}</Alert>}
           <Typography
             variant="h6"
@@ -126,7 +126,7 @@ export default function LoginForm() {
             variant="contained"
             fullWidth
             sx={{
-              mt: 1,
+              mt: "auto !important",
               bgcolor: Colors.primaryGold,
               color: Colors.primaryDarkest,
               fontWeight: 600,

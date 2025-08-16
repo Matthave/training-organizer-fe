@@ -1,26 +1,35 @@
 @use "sass:map";
 
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
+
 $breakpoints: (
-    xsmall: (min-width: 400px,
-    ),
-    small: (min-width: 576px,
-    ),
-    medium: (min-width: 768px,
-    ),
-    large: (min-width: 992px,
-    ),
-    xlarge: (min-width: 1200px,
-    ),
-    xxlarge: (min-width: 1400px,
-    ),
+  xsmall: (
+    min-width: 400px,
+  ),
+  small: (
+    min-width: 576px,
+  ),
+  medium: (
+    min-width: 768px,
+  ),
+  large: (
+    min-width: 992px,
+  ),
+  xlarge: (
+    min-width: 1200px,
+  ),
+  xxlarge: (
+    min-width: 1400px,
+  ),
 );
 
 @mixin mq($key) {
-    $size: map-get(map-get($breakpoints, $key), min-width);
+  $size: map-get(map-get($breakpoints, $key), min-width);
 
-    @if $size {
-        @media (min-width: #{$size}) {
-            @content;
-        }
+  @if $size {
+    @media (min-width: #{$size}) {
+      @content;
     }
+  }
 }

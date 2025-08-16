@@ -39,7 +39,7 @@ export default function DashboardLayout({
   return (
     <Box
       sx={{
-        backgroundColor: "rgba(29, 30, 32, 0.9)",
+        backgroundColor: "#1d1e20",
         minHeight: "100vh",
         color: "#FFFFFF",
       }}
@@ -118,6 +118,8 @@ export default function DashboardLayout({
               onClick={() => handleNavigate("/dashboard/profile")}
               sx={{
                 backgroundColor: "transparent",
+                fontFamily: "Michroma",
+                fontSize: "14px",
                 "&:hover": {
                   backgroundColor: "transparent",
                   color: "#fdbd32",
@@ -129,6 +131,8 @@ export default function DashboardLayout({
             <MenuItem
               onClick={() => handleNavigate("/dashboard/create-training")}
               sx={{
+                fontFamily: "Michroma",
+                fontSize: "14px",
                 "&:hover": {
                   backgroundColor: "transparent",
                   color: "#fdbd32",
@@ -140,6 +144,8 @@ export default function DashboardLayout({
             <MenuItem
               onClick={() => handleNavigate("/dashboard/exercises")}
               sx={{
+                fontFamily: "Michroma",
+                fontSize: "14px",
                 "&:hover": {
                   backgroundColor: "transparent",
                   color: "#fdbd32",
@@ -151,6 +157,8 @@ export default function DashboardLayout({
             <MenuItem
               onClick={() => handleNavigate("/dashboard/trainings")}
               sx={{
+                fontFamily: "Michroma",
+                fontSize: "14px",
                 "&:hover": {
                   backgroundColor: "transparent",
                   color: "#fdbd32",
@@ -162,6 +170,8 @@ export default function DashboardLayout({
             <MenuItem
               onClick={handleLogout}
               sx={{
+                fontFamily: "Michroma",
+                fontSize: "14px",
                 "&:hover": {
                   backgroundColor: "transparent",
                   color: "#fdbd32",
@@ -173,13 +183,7 @@ export default function DashboardLayout({
           </Menu>
         </Toolbar>
       </AppBar>
-      <Box
-        sx={{
-          padding: "2rem",
-        }}
-      >
-        {children}
-      </Box>
+      <Box>{children}</Box>
     </Box>
   );
 }

@@ -1,0 +1,144 @@
+/* MaterialUI customization */
+
+#filterSelect {
+  font-family: "Michroma", serif;
+  font-size: 13px;
+}
+
+.MuiSelect-icon {
+  fill: #fff;
+  transform: translateX(-10px) scale(1.5);
+}
+
+#filterSelect.MuiSelect-select {
+  padding-left: 25px;
+}
+
+#filterSelect.MuiSelect-select > span {
+  font-family: "Michroma", serif;
+  display: block;
+}
+
+#filterSelect.MuiInputLabel-formControl {
+  color: #fff !important;
+}
+
+#filterSelect.MuiTypography-root {
+  font-family: "Michroma", serif;
+  font-size: 13px;
+}
+
+// Mui autocomplete
+.MuiAutocomplete-inputRoot {
+  -ms-overflow-style: none;
+}
+
+.MuiInputBase-input {
+  font-family: "Michroma", serif !important;
+}
+
+.MuiInputLabel-formControl {
+  font-family: "Michroma", serif !important;
+}
+
+.MuiAutocomplete-option[aria-selected="true"] {
+  background-color: #0b0b0b !important;
+}
+
+.MuiAutocomplete-paper {
+  background-color: #2b2b2d !important;
+}
+
+.autocompleteLi {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background-color: #2b2b2d;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0b0b0b !important;
+  }
+}
+
+// MUI select
+
+.MuiMenu-list {
+  background-color: #2b2b2d !important;
+}
+
+.MuiMenuItem-root {
+  background-color: #2b2b2d !important;
+
+  &:hover {
+    background-color: #0b0b0b !important;
+  }
+}
+
+.Mui-selected {
+  background-color: #0b0b0b !important;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  max-width: 1080px;
+
+  @include mq(medium) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding: 0 25px;
+  }
+}
+
+.filterWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 330px;
+  max-width: 330px;
+  height: 115px;
+  margin-bottom: 25px;
+  margin-right: 15px;
+  margin-left: 15px;
+
+  &_label {
+    position: relative;
+    align-self: flex-start;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-family: "Michroma", serif;
+    font-size: 18px;
+  }
+
+  &-tags {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    padding-bottom: 25px;
+
+    @include mq(xlarge) {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      width: 100%;
+      max-width: none;
+      height: 245px;
+      margin-right: auto;
+      padding-bottom: 0;
+    }
+  }
+}
