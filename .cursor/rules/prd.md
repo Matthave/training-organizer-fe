@@ -17,7 +17,7 @@ Użytkownicy tracą czas na każdorazowe, ręczne wyszukiwanie ćwiczeń i ukła
 3.1. Baza ćwiczeń (CRUD)
 
 - Pola danych ćwiczenia (MVP):
-  - id (UUID/obiektowy identyfikator), nazwa [wymagane, 1–100 znaków], partiaGłówna [wymagane, ze słownika], podpartie[] [0..N ze słownika], ocenaES [wymagane, jedno z: E, D, C, B, A, S], opis [opcjonalny, ≤100 znaków, PL], isAiGenerated [bool], createdAt/updatedAt, createdBy.
+  - id (UUID/obiektowy identyfikator), nazwa [wymagane, 1–300 znaków], partiaGłówna [wymagane, ze słownika], podpartie[] [0..N ze słownika], ocenaES [wymagane, jedno z: E, D, C, B, A, S], opis [opcjonalny, ≤300 znaków, PL], isAiGenerated [bool], createdAt/updatedAt, createdBy.
 - Taksonomia: jedna partia główna na ćwiczenie; wiele podpartii; słownik zamknięty (read‑only dla użytkownika, publikowany w repo i widoczny w aplikacji jako referencja).
 - Operacje: dodaj, edytuj, usuń, podgląd szczegółów, lista.
 - Walidacje: nazwa i ocenaES wymagane; partiaGłówna wymagana; opis jeśli istnieje to ≤100 znaków i język polski (weryfikacja heurystyczna); brak możliwości dodawania własnych tagów.

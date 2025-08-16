@@ -29,9 +29,6 @@ export default function RootLayout({
           newestOnTop={false}
           closeOnClick
           rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
           theme="dark"
         />
       </body>

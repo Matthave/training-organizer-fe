@@ -206,3 +206,137 @@ export const editExercise = async (exerciseId: string, exerciseData: any) => {
   }
   return { success: false, message: "Brak tokena autoryzacyjnego." };
 };
+
+export const addTraining = async (trainingData: any) => {
+  const cookieStore = await cookies();
+  const hasToken = cookieStore.has("token");
+
+  if (hasToken) {
+    const tokenFromCookie = cookieStore.get("token");
+    const tokenValue = tokenFromCookie?.value;
+
+    try {
+      if (tokenValue) {
+        const URL = `http://localhost:8080/training/add`;
+        const res = await fetch(URL, {
+          method: "POST",
+          headers: {
+            cookie: `token=${tokenValue}`,
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(trainingData),
+        });
+
+        const data = await res.json();
+
+        if (res.status !== 201) {
+          throw new Error(data.message || "Nie udało się dodać treningu");
+        }
+
+        return {
+          success: true,
+          message: data.message,
+          training: data.training,
+        };
+      }
+    } catch (err: unknown) {
+      const error = err as Error;
+      // eslint-disable-next-line no-console
+      console.log("addTraining Error", error);
+      return {
+        success: false,
+        message: error.message || "Wystąpił błąd podczas dodawania treningu.",
+      };
+    }
+  }
+  return { success: false, message: "Brak tokena autoryzacyjnego." };
+};
+
+export const getTrainings = async () => {
+  const cookieStore = await cookies();
+  const hasToken = cookieStore.has("token");
+
+  if (hasToken) {
+    const tokenFromCookie = cookieStore.get("token");
+    const tokenValue = tokenFromCookie?.value;
+
+    try {
+      if (tokenValue) {
+        const URL = `http://localhost:8080/training`;
+        const res = await fetch(URL, {
+          method: "GET",
+          headers: {
+            cookie: `token=${tokenValue}`,
+          },
+          credentials: "include",
+        });
+
+        const data = await res.json();
+
+        if (res.status !== 200) {
+          throw new Error(data.message || "Nie udało się pobrać treningów");
+        }
+
+        return {
+          success: true,
+          message: data.message,
+          trainings: data.trainings,
+        };
+      }
+    } catch (err: unknown) {
+      const error = err as Error;
+      // eslint-disable-next-line no-console
+      console.log("getTrainings Error", error);
+      return {
+        success: false,
+        message: error.message || "Wystąpił błąd podczas pobierania treningów.",
+      };
+    }
+  }
+  return { success: false, message: "Brak tokena autoryzacyjnego." };
+};
+
+export const getTraining = async (id: string) => {
+  const cookieStore = await cookies();
+  const hasToken = cookieStore.has("token");
+
+  if (hasToken) {
+    const tokenFromCookie = cookieStore.get("token");
+    const tokenValue = tokenFromCookie?.value;
+
+    try {
+      if (tokenValue) {
+        const URL = `http://localhost:8080/training/${id}`;
+        const res = await fetch(URL, {
+          method: "GET",
+          headers: {
+            cookie: `token=${tokenValue}`,
+          },
+          credentials: "include",
+        });
+
+        const data = await res.json();
+
+        if (res.status !== 200) {
+          throw new Error(data.message || "Nie udało się pobrać treningu");
+        }
+
+        return {
+          success: true,
+          message: data.message,
+          training: data.training,
+        };
+      }
+    } catch (err: unknown) {
+      const error = err as Error;
+      // eslint-disable-next-line no-console
+      console.log("getTraining Error", error);
+      return {
+        success: false,
+        message: error.message || "Wystąpił błąd podczas pobierania treningu.",
+      };
+    }
+  }
+  return { success: false, message: "Brak tokena autoryzacyjnego." };
+};

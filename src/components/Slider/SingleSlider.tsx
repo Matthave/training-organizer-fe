@@ -11,6 +11,7 @@ const SliderElement = ({
   settedValue,
   id,
   label,
+  widthElement,
 }: {
   minRange: number;
   maxRange: number;
@@ -18,6 +19,7 @@ const SliderElement = ({
   settedValue: number;
   id: string;
   label: string;
+  widthElement?: number;
 }) => {
   const handleChange = (event: Event, newValue: number | number[]) => {
     sliderHandler(newValue, id);
@@ -26,7 +28,7 @@ const SliderElement = ({
   return (
     <Box
       sx={{
-        width: 310,
+        width: widthElement || 310,
         "& .MuiSlider-thumb": {
           width: "25px",
           height: "25px",

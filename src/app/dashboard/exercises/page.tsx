@@ -284,7 +284,11 @@ export default function Exercises() {
 
   const handleExerciseDeleted = () => {
     fetchExercises();
-    toast.success("Pomyślnie usunięto ćwiczenie!");
+    toast.success("Pomyślnie usunięto ćwiczenie!", {
+      position: "bottom-center",
+      theme: "dark",
+      autoClose: 2000,
+    });
   };
 
   const handleEditExercise = (exercise: IExercise) => {
@@ -306,7 +310,7 @@ export default function Exercises() {
   };
 
   return (
-    <Box>
+    <Box sx={{ pt: 2, mt: 3, maxWidth: "1300px", margin: "0 auto" }}>
       <Box
         sx={{
           display: "flex",
@@ -334,14 +338,16 @@ export default function Exercises() {
           component="h1"
           sx={{
             mb: 4,
-            color: "rgba(255, 255, 255, 0.9)",
+            color: editingExerciseId ? "#00af97" : "rgba(255, 255, 255, 0.9)",
             fontFamily: "Michroma",
             textTransform: "uppercase",
             fontSize: { xs: "24px", sm: "32px" },
             textAlign: "center",
           }}
         >
-          Dodaj nowe ćwiczenie do biblioteki
+          {editingExerciseId
+            ? "Tryb edycji ćwiczenia"
+            : "Dodaj nowe ćwiczenie do biblioteki"}
         </Typography>
         <div className="filters">
           <div className="filterWrapper">
@@ -477,35 +483,104 @@ export default function Exercises() {
           </Box>
         </Box>
 
-        <Button
-          onClick={handleSubmit}
-          disabled={isButtonDisabled}
-          sx={{
-            backgroundColor: isButtonDisabled ? "#1d1e20" : "#fdbd32",
-            border: isButtonDisabled ? "2px solid grey" : "2px solid #fdbd32",
-            borderRadius: "31px",
-            color: isButtonDisabled ? "grey" : "#1d1e20",
-            width: "330px",
-            height: "60px",
-            mt: 4,
-            textTransform: "none",
-            fontSize: "16px",
-            transition: "background-color 0.3s, border-color 0.3s, color 0.3s",
-            fontFamily: "Michroma",
-            "&:hover": {
-              backgroundColor: isButtonDisabled ? "#1d1e20" : "#ffce51",
-              borderColor: isButtonDisabled ? "grey" : "#ffce51",
+        {!editingExerciseId && (
+          <Button
+            onClick={handleSubmit}
+            disabled={isButtonDisabled}
+            sx={{
+              backgroundColor: isButtonDisabled ? "#1d1e20" : "#fdbd32",
+              border: isButtonDisabled ? "2px solid grey" : "2px solid #fdbd32",
+              borderRadius: "31px",
               color: isButtonDisabled ? "grey" : "#1d1e20",
-            },
-            "&.Mui-disabled": {
-              backgroundColor: "#1d1e20",
-              borderColor: "grey",
-              color: "grey",
-            },
-          }}
-        >
-          {editingExerciseId ? "Edytuj ćwiczenie" : "Dodaj ćwiczenie"}
-        </Button>
+              width: "330px",
+              height: "60px",
+              mt: 4,
+              textTransform: "none",
+              fontSize: "16px",
+              transition:
+                "background-color 0.3s, border-color 0.3s, color 0.3s",
+              fontFamily: "Michroma",
+              "&:hover": {
+                backgroundColor: isButtonDisabled ? "#1d1e20" : "#ffce51",
+                borderColor: isButtonDisabled ? "grey" : "#ffce51",
+                color: isButtonDisabled ? "grey" : "#1d1e20",
+              },
+              "&.Mui-disabled": {
+                backgroundColor: "#1d1e20",
+                borderColor: "grey",
+                color: "grey",
+              },
+            }}
+          >
+            Dodaj ćwiczenie
+          </Button>
+        )}
+
+        {editingExerciseId && (
+          <>
+            <Button
+              onClick={handleSubmit}
+              disabled={isButtonDisabled}
+              sx={{
+                backgroundColor: isButtonDisabled ? "#1d1e20" : "#008371",
+                border: isButtonDisabled
+                  ? "2px solid grey"
+                  : "2px solid #008371",
+                borderRadius: "31px",
+                color: isButtonDisabled ? "grey" : "#FFF",
+                width: "330px",
+                height: "60px",
+                mt: 4,
+                textTransform: "none",
+                fontSize: "16px",
+                transition:
+                  "background-color 0.3s, border-color 0.3s, color 0.3s",
+                fontFamily: "Michroma",
+                "&:hover": {
+                  backgroundColor: isButtonDisabled ? "#1d1e20" : "#00af97",
+                  borderColor: isButtonDisabled ? "grey" : "#00af97",
+                },
+                "&.Mui-disabled": {
+                  backgroundColor: "#1d1e20",
+                  borderColor: "grey",
+                  color: "grey",
+                },
+              }}
+            >
+              Edytuj ćwiczenie
+            </Button>
+
+            <Button
+              onClick={() => {
+                setEditingExerciseId(null);
+                setFormState({ name: "", description: "" });
+                setPart([]);
+                setSubpart([]);
+                setClassification(0);
+              }}
+              sx={{
+                backgroundColor: "transparent",
+                border: "2px solid #008371",
+                borderRadius: "31px",
+                color: "#FFF",
+                width: "330px",
+                height: "60px",
+                mt: 1,
+                textTransform: "none",
+                fontSize: "16px",
+                transition:
+                  "background-color 0.3s, border-color 0.3s, color 0.3s",
+                fontFamily: "Michroma",
+                "&:hover": {
+                  backgroundColor: "#00af97",
+                  borderColor: "#00af97",
+                },
+              }}
+            >
+              Anuluj tryb edycji
+            </Button>
+          </>
+        )}
       </Box>
       <Box>
         {Object.entries(groupedExercises).map(

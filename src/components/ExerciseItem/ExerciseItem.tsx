@@ -83,7 +83,7 @@ export default function ExerciseItem({
         aria-describedby="alert-dialog-description"
         PaperProps={{
           style: {
-            backgroundColor: "#161a1d",
+            backgroundColor: "rgba(17, 19, 22, 0.9)",
             border: "1px solid rgba(0, 175, 151, 0.3)",
             padding: "20px 30px",
             color: "#fff",

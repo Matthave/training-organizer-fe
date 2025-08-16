@@ -1,6 +1,6 @@
 .exerciseItem {
   background-color: #161a1d;
-  border-radius: 20px;
+  border-radius: 31px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -60,14 +60,17 @@
     font-family: "Michroma", sans-serif;
     font-size: 80px;
     text-align: center;
-    margin-top: auto;
+
     font-weight: 100;
+    margin: 0;
+    margin-top: auto;
   }
 
   &__actions {
     display: flex;
     gap: 10px;
     margin-top: 15px;
+    padding: 0 25px;
 
     button {
       background-color: $primary-green;

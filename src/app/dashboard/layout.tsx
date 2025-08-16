@@ -39,7 +39,7 @@ export default function DashboardLayout({
   return (
     <Box
       sx={{
-        backgroundColor: "#1d1e20",
+        backgroundColor: "#232527",
         minHeight: "100vh",
         color: "#FFFFFF",
       }}
