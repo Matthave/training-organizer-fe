@@ -1,28 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import { getTraining } from "@/actions";
 import { Box, Typography } from "@mui/material";
 
-export default function TrainingDetails({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function TrainingDetails() {
+  const params = useParams();
+  const id = params.id as string;
   const [training, setTraining] = useState<any>(null);
 
   useEffect(() => {
     const fetchTraining = async () => {
-      const res = await getTraining(params.id);
+      const res = await getTraining(id);
       if (res.success) {
         setTraining(res.training);
       }
     };
 
-    if (params.id) {
+    if (id) {
       fetchTraining();
     }
-  }, [params.id]);
+  }, [id]);
 
   if (!training) {
     return (
