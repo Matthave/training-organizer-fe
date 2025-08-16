@@ -4,13 +4,11 @@ import { useEffect, useState } from "react";
 import { getTraining } from "@/actions";
 import { Box, Typography } from "@mui/material";
 
-interface TrainingDetailsPageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default function TrainingDetails({ params }: TrainingDetailsPageProps) {
+export default function TrainingDetails({
+  params,
+}: {
+  params: { id: string };
+}) {
   const [training, setTraining] = useState<any>(null);
 
   useEffect(() => {
