@@ -28,7 +28,7 @@ export default function LoginForm() {
   const handleLogin = async () => {
     setError(null);
     try {
-      const URL = `http://localhost:8080/auth/login`;
+      const URL = `${process.env.NEXT_PUBLIC_API_URL}/auth/login`;
       const response = await fetch(URL, {
         method: "POST",
         body: JSON.stringify({

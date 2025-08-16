@@ -11,7 +11,7 @@ export const getLogoutUser = async () => {
 };
 
 export const signupUser = async (userData: any) => {
-  const URL = `http://localhost:8080/auth/signup`;
+  const URL = `${process.env.NEXT_PUBLIC_API_URL}/auth/signup`;
   try {
     const response = await fetch(URL, {
       method: "POST",
@@ -48,7 +48,7 @@ export const addExercise = async (exerciseData: any) => {
 
     try {
       if (tokenValue) {
-        const URL = "http://localhost:8080/exercise/add";
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}/exercise/add`;
         const res = await fetch(URL, {
           method: "POST",
           headers: {
@@ -84,7 +84,7 @@ export const getExercises = async () => {
 
     try {
       if (tokenValue) {
-        const URL = "http://localhost:8080/exercise";
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}/exercise`;
         const res = await fetch(URL, {
           method: "GET",
           headers: {
@@ -128,7 +128,7 @@ export const deleteExercise = async (exerciseId: string) => {
 
     try {
       if (tokenValue) {
-        const URL = `http://localhost:8080/exercise/${exerciseId}`;
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}/exercise/${exerciseId}`;
         const res = await fetch(URL, {
           method: "DELETE",
           headers: {
@@ -171,7 +171,7 @@ export const editExercise = async (exerciseId: string, exerciseData: any) => {
 
     try {
       if (tokenValue) {
-        const URL = `http://localhost:8080/exercise/${exerciseId}`;
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}/exercise/${exerciseId}`;
         const res = await fetch(URL, {
           method: "PUT",
           headers: {
@@ -217,7 +217,7 @@ export const addTraining = async (trainingData: any) => {
 
     try {
       if (tokenValue) {
-        const URL = `http://localhost:8080/training/add`;
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}/training/add`;
         const res = await fetch(URL, {
           method: "POST",
           headers: {
@@ -263,7 +263,7 @@ export const getTrainings = async () => {
 
     try {
       if (tokenValue) {
-        const URL = `http://localhost:8080/training`;
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}/training`;
         const res = await fetch(URL, {
           method: "GET",
           headers: {
@@ -307,7 +307,7 @@ export const getTraining = async (id: string) => {
 
     try {
       if (tokenValue) {
-        const URL = `http://localhost:8080/training/${id}`;
+        const URL = `${process.env.NEXT_PUBLIC_API_URL}/training/${id}`;
         const res = await fetch(URL, {
           method: "GET",
           headers: {
