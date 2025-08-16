@@ -65,6 +65,7 @@ export default function CheckboxesTags({
         id="autocompleteTags"
         options={tagsArray}
         disableCloseOnSelect
+        disablePortal
         isOptionEqualToValue={(option, value) => option.name === value.name}
         onChange={(event, newValue: ISubpart[]) =>
           autocompleteTagsHandler(newValue)

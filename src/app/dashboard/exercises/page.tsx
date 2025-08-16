@@ -341,8 +341,9 @@ export default function Exercises() {
             color: editingExerciseId ? "#00af97" : "rgba(255, 255, 255, 0.9)",
             fontFamily: "Michroma",
             textTransform: "uppercase",
-            fontSize: { xs: "24px", sm: "32px" },
+            fontSize: { xs: "20px", sm: "28px" },
             textAlign: "center",
+            lineHeight: { xs: "35px", sm: "40px" },
           }}
         >
           {editingExerciseId
@@ -384,6 +385,7 @@ export default function Exercises() {
               selectHandler={handleSelectChange}
               selectState={part}
               id="part"
+              widthElement={330}
             >
               {/* Opcje zostaną dodane później */}
             </SelectElement>

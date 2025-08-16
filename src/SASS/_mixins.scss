@@ -4,17 +4,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 
 $breakpoints: (
-  xsmall: (min-width: 400px,
+  xsmall: (
+    min-width: 400px,
   ),
-  small: (min-width: 576px,
+  small: (
+    min-width: 576px,
   ),
-  medium: (min-width: 768px,
+  medium: (
+    min-width: 768px,
   ),
-  large: (min-width: 992px,
+  large: (
+    min-width: 992px,
   ),
-  xlarge: (min-width: 1200px,
+  xlarge: (
+    min-width: 1200px,
   ),
-  xxlarge: (min-width: 1400px,
+  xxlarge: (
+    min-width: 1400px,
   ),
 );
 

@@ -197,7 +197,7 @@ export default function TrainingDay({
           position: "relative",
           justifyContent: "center",
           alignItems: "center",
-          height: "84px",
+          height: { xs: "64x", md: "84px" },
           backgroundColor: "#161a1d",
           padding: "1rem 2rem",
           borderRadius: "62px",
@@ -207,7 +207,7 @@ export default function TrainingDay({
           sx={{
             color: "#fff",
             fontFamily: "Michroma",
-            fontSize: "24px",
+            fontSize: { xs: "20px", md: "24px" },
           }}
           component="h2"
         >
@@ -217,7 +217,7 @@ export default function TrainingDay({
           sx={{
             position: "absolute",
             top: "50%",
-            right: "25px",
+            right: { xs: "15px", md: "25px" },
             transform: "translateY(-50%)",
             backgroundColor: "transparent",
             border: "2px solid #00af97",
@@ -226,7 +226,8 @@ export default function TrainingDay({
             fontFamily: "Michroma",
             textTransform: "none",
             p: 1,
-            px: 2,
+            px: { xs: 1, md: 2 },
+            fontSize: { xs: "10px", md: "14px" },
             "&:hover": {
               backgroundColor: "#00af97",
               borderColor: "#00af97",
@@ -266,11 +267,11 @@ export default function TrainingDay({
           border: "2px solid #008371",
           borderRadius: "31px",
           color: "#FFF",
-          width: "295px",
-          height: "54px",
+          width: { xs: "165px", md: "295px" },
+          height: { xs: "40px", md: "54px" },
           mt: 2,
           textTransform: "none",
-          fontSize: "16px",
+          fontSize: { xs: "12px", md: "16px" },
           transition: "background-color 0.3s, border-color 0.3s, color 0.3s",
           fontFamily: "Michroma",
           "&:hover": {
@@ -403,7 +404,7 @@ export default function TrainingDay({
           <Button
             onClick={() => handleExerciseClickOpen(party)}
             sx={{
-              backgroundColor: "transparent",
+              backgroundColor: { xs: "#00af97", md: "transparent" },
               border: "2px solid #00af97",
               borderRadius: "31px",
               color: "#FFF",
@@ -426,15 +427,20 @@ export default function TrainingDay({
         open={open}
         onClose={handleClose}
         PaperProps={{
-          style: {
+          sx: {
             backgroundColor: "rgba(17, 19, 22, 0.9)",
             border: "1px solid rgba(0, 175, 151, 0.3)",
-            padding: "20px 30px",
+            padding: { xs: "10px 20px", md: "20px 30px" },
             color: "#fff",
+            m: { xs: 1, md: 2 },
           },
         }}
       >
-        <DialogTitle>Wybierz partie mięśniowe</DialogTitle>
+        <DialogTitle
+          sx={{ fontFamily: "Michroma", fontSize: { xs: "18px", md: "24px" } }}
+        >
+          Wybierz partie mięśniowe
+        </DialogTitle>
         <DialogContent>
           <SelectElement
             optionsToSelect={parties}
@@ -477,15 +483,20 @@ export default function TrainingDay({
         open={exerciseDialogOpen}
         onClose={handleExerciseClose}
         PaperProps={{
-          style: {
+          sx: {
             backgroundColor: "rgba(17, 19, 22, 0.9)",
             border: "1px solid rgba(0, 175, 151, 0.3)",
-            padding: "20px 30px",
+            padding: { xs: "10px 20px", md: "20px 30px" },
             color: "#fff",
+            m: { xs: 1, md: 2 },
           },
         }}
       >
-        <DialogTitle>Wybierz ćwiczenie dla {currentPart}</DialogTitle>
+        <DialogTitle
+          sx={{ fontFamily: "Michroma", fontSize: { xs: "18px", md: "24px" } }}
+        >
+          Wybierz ćwiczenie dla {currentPart}
+        </DialogTitle>
         <DialogContent>
           <SelectElement
             optionsToSelect={
@@ -532,15 +543,18 @@ export default function TrainingDay({
         open={sliderDialogOpen}
         onClose={handleSliderDialogClose}
         PaperProps={{
-          style: {
+          sx: {
             backgroundColor: "rgba(17, 19, 22, 0.9)",
             border: "1px solid rgba(0, 175, 151, 0.3)",
-            padding: "20px 30px",
+            padding: { xs: "10px 20px", md: "20px 30px" },
             color: "#fff",
+            m: { xs: 1, md: 2 },
           },
         }}
       >
-        <DialogTitle sx={{ fontFamily: "Michroma", fontSize: "24px" }}>
+        <DialogTitle
+          sx={{ fontFamily: "Michroma", fontSize: { xs: "18px", md: "24px" } }}
+        >
           {editingType === "series"
             ? "Wybierz liczbę serii"
             : "Wybierz liczbę powtórzeń"}
@@ -559,7 +573,6 @@ export default function TrainingDay({
             settedValue={tempSliderValue}
             id="slider"
             label={editingType || ""}
-            widthElement={200}
           />
         </DialogContent>
         <DialogActions>
@@ -595,15 +608,18 @@ export default function TrainingDay({
         open={deleteDialogOpen}
         onClose={handleDeleteClose}
         PaperProps={{
-          style: {
+          sx: {
             backgroundColor: "rgba(17, 19, 22, 0.9)",
             border: "1px solid rgba(0, 175, 151, 0.3)",
-            padding: "20px 30px",
+            padding: { xs: "10px 20px", md: "20px 30px" },
             color: "#fff",
+            m: { xs: 1, md: 2 },
           },
         }}
       >
-        <DialogTitle sx={{ fontFamily: "Michroma", fontSize: "24px" }}>
+        <DialogTitle
+          sx={{ fontFamily: "Michroma", fontSize: { xs: "18px", md: "24px" } }}
+        >
           {"Potwierdzenie usunięcia"}
         </DialogTitle>
         <DialogContent>
@@ -611,8 +627,9 @@ export default function TrainingDay({
             sx={{
               color: "#fff",
               fontFamily: "Michroma",
-              padding: "20px 0",
-              lineHeight: "28px",
+              padding: { xs: "10px 0", md: "20px 0" },
+              lineHeight: { xs: "20px", md: "28px" },
+              fontSize: { xs: "12px", md: "16px" },
             }}
           >
             Czy na pewno chcesz usunąć ćwiczenie{" "}
@@ -659,15 +676,21 @@ export default function TrainingDay({
         open={dayDeleteDialogOpen}
         onClose={handleDayDeleteClose}
         PaperProps={{
-          style: {
+          sx: {
             backgroundColor: "rgba(17, 19, 22, 0.9)",
             border: "1px solid rgba(0, 175, 151, 0.3)",
-            padding: "20px 30px",
+            padding: { xs: "10px 20px", md: "20px 30px" },
             color: "#fff",
+            m: { xs: 1, md: 2 },
           },
         }}
       >
-        <DialogTitle sx={{ fontFamily: "Michroma", fontSize: "24px" }}>
+        <DialogTitle
+          sx={{
+            fontFamily: "Michroma",
+            fontSize: { xs: "18px", md: "24px" },
+          }}
+        >
           {"Potwierdzenie usunięcia"}
         </DialogTitle>
         <DialogContent>
@@ -675,8 +698,9 @@ export default function TrainingDay({
             sx={{
               color: "#fff",
               fontFamily: "Michroma",
-              padding: "20px 0",
-              lineHeight: "28px",
+              padding: { xs: "10px 0", md: "20px 0" },
+              lineHeight: { xs: "20px", md: "28px" },
+              fontSize: { xs: "12px", md: "16px" },
             }}
           >
             Czy na pewno chcesz usunąć{" "}

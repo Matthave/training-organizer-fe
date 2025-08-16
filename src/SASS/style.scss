@@ -4,11 +4,11 @@
 @forward "exerciseItem";
 @forward "createTraining";
 
-:root {
-  --primary-gold: #{variables.$primary-gold};
-  --primary-dark: #{variables.$primary-dark};
-  --primary-darkest: #{variables.$primary-darkest};
-}
+// :root {
+//   --primary-gold: #{variables.$primary-gold};
+//   --primary-dark: #{variables.$primary-dark};
+//   --primary-darkest: #{variables.$primary-darkest};
+// }
 
 body {
   margin: 0;

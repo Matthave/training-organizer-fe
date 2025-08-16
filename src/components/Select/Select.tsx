@@ -32,12 +32,14 @@ const SelectElement = ({
   selectState,
   id,
   singleChoice,
+  widthElement,
 }: {
   optionsToSelect: { name: string }[];
   selectHandler: (filterValue: string[], id: string) => void;
   selectState: string[];
   id: string;
   singleChoice?: boolean;
+  widthElement?: number;
 }) => {
   const handleChange = (event: SelectChangeEvent<typeof selectState>) => {
     const {
@@ -61,7 +63,7 @@ const SelectElement = ({
   return (
     <Box
       sx={{
-        width: 330,
+        width: { xs: widthElement || 240, md: widthElement || 330 },
         "& #filterSelect": {
           border: "1px solid #555",
           borderRadius: "31px",

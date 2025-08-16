@@ -17,7 +17,7 @@
   padding-left: 25px;
 }
 
-#filterSelect.MuiSelect-select>span {
+#filterSelect.MuiSelect-select > span {
   font-family: "Michroma", serif;
   display: block;
 }
@@ -50,17 +50,31 @@
 
 .MuiAutocomplete-paper {
   background-color: #2b2b2d !important;
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .autocompleteLi {
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 65px;
   background-color: #2b2b2d;
   cursor: pointer;
+  color: #fff;
+  font-family: "Michroma", serif;
+  font-size: 12px;
 
-  &:hover {
-    background-color: #0b0b0b !important;
+  @include mq(medium) {
+    font-size: 14px;
+
+    &:hover {
+      background-color: #0b0b0b !important;
+    }
   }
 }
 

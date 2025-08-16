@@ -35,6 +35,10 @@ export default function TrainingDetails() {
     <Box sx={{ pt: 2, mt: 3, maxWidth: "1300px", margin: "0 auto", px: 2 }}>
       <Typography
         sx={{
+          backgroundColor: "rgba(47, 72, 88, 0.25)",
+          border: "2px solid #2f4858",
+          borderRadius: "31px",
+          padding: { xs: "10px 20px", md: "20px 30px" },
           color: "#fff",
           fontFamily: "Michroma",
           textTransform: "uppercase",

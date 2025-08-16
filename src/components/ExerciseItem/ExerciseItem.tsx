@@ -82,17 +82,18 @@ export default function ExerciseItem({
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
         PaperProps={{
-          style: {
+          sx: {
             backgroundColor: "rgba(17, 19, 22, 0.9)",
             border: "1px solid rgba(0, 175, 151, 0.3)",
-            padding: "20px 30px",
+            padding: { xs: "10px 20px", md: "20px 30px" },
             color: "#fff",
+            m: { xs: 1, md: 2 },
           },
         }}
       >
         <DialogTitle
           id="alert-dialog-title"
-          sx={{ fontFamily: "Michroma", fontSize: "24px" }}
+          sx={{ fontFamily: "Michroma", fontSize: { xs: "18px", md: "24px" } }}
         >
           {"Potwierdzenie usunięcia"}
         </DialogTitle>
@@ -102,8 +103,9 @@ export default function ExerciseItem({
             sx={{
               color: "#fff",
               fontFamily: "Michroma",
-              padding: "20px 0",
-              lineHeight: "28px",
+              padding: { xs: "10px 0", md: "20px 0" },
+              lineHeight: { xs: "20px", md: "28px" },
+              fontSize: { xs: "12px", md: "16px" },
             }}
           >
             Czy na pewno chcesz usunąć ćwiczenie{" "}

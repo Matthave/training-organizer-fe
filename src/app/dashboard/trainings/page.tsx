@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getTrainings } from "@/actions";
 import { Box, Typography } from "@mui/material";
+import Link from "next/link";
 
 export default function Trainings() {
   const [trainings, setTrainings] = useState([]);
@@ -26,7 +27,16 @@ export default function Trainings() {
 
   return (
     <Box
-      sx={{ pt: 2, mt: 3, maxWidth: "1300px", margin: "0 auto", px: "25px" }}
+      sx={{
+        pt: 2,
+        mt: 3,
+        maxWidth: "1300px",
+        margin: "0 auto",
+        px: "25px",
+        display: "flex",
+        flexDirection: "column",
+        flexGrow: 1,
+      }}
     >
       <Box>
         <Typography
@@ -43,41 +53,80 @@ export default function Trainings() {
           Twoje treningi
         </Typography>
       </Box>
-      {trainings.map((training: any) => (
+      {trainings.length > 0 ? (
         <Box
           sx={{
-            width: "300px",
-            height: "400px",
-            backgroundColor: "rgba(0, 185, 160, 0.25)",
-            border: "2px solid #00af97",
-            borderRadius: "31px",
-            p: 2,
-            mt: 2,
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "20px",
+            mt: 4,
+          }}
+        >
+          {trainings.map((training: any) => (
+            <Box
+              sx={{
+                width: "300px",
+                height: "400px",
+                backgroundColor: "rgba(47, 72, 88, 0.25)",
+                border: "2px solid #2f4858",
+                borderRadius: "31px",
+                p: 2,
+                mt: 2,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                cursor: "pointer",
+                transition: "background-color 0.3s ease",
+                "&:hover": {
+                  backgroundColor: "rgba(47, 72, 88, 0.7)",
+                },
+              }}
+              key={training._id}
+              onClick={() => handleTrainingClick(training._id)}
+            >
+              <Typography
+                sx={{
+                  color: "#fff",
+                  fontFamily: "Michroma",
+                  textTransform: "uppercase",
+                  fontSize: "32px",
+                  textAlign: "center",
+                }}
+              >
+                {training.name}
+              </Typography>
+            </Box>
+          ))}
+        </Box>
+      ) : (
+        <Box
+          sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            cursor: "pointer",
-            transition: "background-color 0.3s ease",
-            "&:hover": {
-              backgroundColor: "rgba(0, 185, 160, 0.5)",
-            },
+            flexGrow: 1,
+            minHeight: "60vh",
           }}
-          key={training._id}
-          onClick={() => handleTrainingClick(training._id)}
         >
           <Typography
             sx={{
               color: "#fff",
-              fontFamily: "Michroma",
-              textTransform: "uppercase",
-              fontSize: "32px",
               textAlign: "center",
+              fontSize: "20px",
+              fontFamily: "Michroma",
             }}
           >
-            {training.name}
+            Nie masz żadnych treningów - Przejdź do{" "}
+            <Link
+              href="/dashboard/create-training"
+              style={{ color: "#00af97", textDecoration: "none" }}
+            >
+              kreatora treningów
+            </Link>
           </Typography>
         </Box>
-      ))}
+      )}
     </Box>
   );
 }

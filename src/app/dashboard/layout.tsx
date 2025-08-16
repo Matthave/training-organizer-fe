@@ -39,7 +39,7 @@ export default function DashboardLayout({
   return (
     <Box
       sx={{
-        backgroundColor: "#232527",
+        backgroundColor: "#1d1e20",
         minHeight: "100vh",
         color: "#FFFFFF",
       }}
@@ -139,7 +139,7 @@ export default function DashboardLayout({
                 },
               }}
             >
-              Stwórz trening
+              Kreator treningowy
             </MenuItem>
             <MenuItem
               onClick={() => handleNavigate("/dashboard/exercises")}
