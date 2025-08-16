@@ -176,7 +176,7 @@ export default function TrainingDay({
     handleClose();
   };
 
-  const selectHandler = (filterValue: string[], id: string) => {
+  const selectHandler = (filterValue: string[]) => {
     setSelectedParties(filterValue);
   };
 

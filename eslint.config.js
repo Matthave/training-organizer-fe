@@ -1,4 +1,5 @@
 const eslintConfigPrettier = require("eslint-config-prettier");
+const nextPlugin = require("@next/eslint-plugin-next");
 
 module.exports = [
   {
@@ -34,6 +35,7 @@ module.exports = [
       react: require("eslint-plugin-react"), // Włącz wtyczkę React
       "react-hooks": require("eslint-plugin-react-hooks"), // Włącz wtyczkę React Hooks
       prettier: require("eslint-plugin-prettier"), // Włącz Prettier jako plugin ESLint
+      "@next/next": nextPlugin,
     },
     settings: {
       react: {
@@ -61,6 +63,8 @@ module.exports = [
 
       // Konfiguracja Prettier
       "prettier/prettier": "error", // Użyj konfiguracji Prettier z .prettier.json
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs["core-web-vitals"].rules,
     },
     linterOptions: {
       reportUnusedDisableDirectives: true, // Zgłaszaj nieużywane dyrektywy disable ESLint
