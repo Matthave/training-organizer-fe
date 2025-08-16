@@ -1,13 +1,13 @@
-@import "_mixins";
-@import "_variables";
-@import "_main";
-@import "_exerciseItem";
-@import "_createTraining";
+@forward "mixins";
+@use "variables";
+@forward "main";
+@forward "exerciseItem";
+@forward "createTraining";
 
 :root {
-  --primary-gold: #{$primary-gold};
-  --primary-dark: #{$primary-dark};
-  --primary-darkest: #{$primary-darkest};
+  --primary-gold: #{variables.$primary-gold};
+  --primary-dark: #{variables.$primary-dark};
+  --primary-darkest: #{variables.$primary-darkest};
 }
 
 body {

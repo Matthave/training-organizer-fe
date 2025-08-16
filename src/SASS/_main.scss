@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 /* MaterialUI customization */
 
 #filterSelect {
@@ -14,7 +17,7 @@
   padding-left: 25px;
 }
 
-#filterSelect.MuiSelect-select > span {
+#filterSelect.MuiSelect-select>span {
   font-family: "Michroma", serif;
   display: block;
 }

@@ -1,24 +1,20 @@
+@use "variables" as *;
+@use "mixins" as *;
+
 .training-day {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 2rem;
-
-  &__header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1e1e1e;
-    padding: 1rem 2rem;
-    border-radius: 31px;
-  }
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
 
-  &__delete-button {
-    // @include green-button;
-  }
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #1e1e1e;
+        padding: 1rem 2rem;
+        border-radius: 31px;
+    }
 
-  &__set-parts-button {
-    // @include green-button;
-    align-self: flex-start;
-  }
+
 }
