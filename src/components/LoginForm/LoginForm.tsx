@@ -126,7 +126,7 @@ export default function LoginForm() {
             variant="contained"
             fullWidth
             sx={{
-              mt: "auto !important",
+              mt: { xs: 2, md: "auto !important" },
               bgcolor: Colors.primaryGold,
               color: Colors.primaryDarkest,
               fontWeight: 600,

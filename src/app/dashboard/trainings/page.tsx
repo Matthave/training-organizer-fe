@@ -28,7 +28,8 @@ export default function Trainings() {
   return (
     <Box
       sx={{
-        pt: 2,
+        py: 2,
+        pb: 3,
         mt: 3,
         maxWidth: "1300px",
         margin: "0 auto",
